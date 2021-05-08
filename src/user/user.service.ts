@@ -9,10 +9,11 @@ export class UserService {
         email: 'rodrigosurita@live.com',
         password: '123456',
         fullName: 'Rodrigo Surita da Silva',
-        registerDate: new Date()
+        createDate: new Date()
     }];
 
     public create(user: User): User{
+        user.createDate = new Date();
         this.users.push(user);
         return user;
     }
