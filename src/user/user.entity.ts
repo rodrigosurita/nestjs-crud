@@ -1,3 +1,4 @@
+import { Exclude, Expose } from 'class-transformer';
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 import { UniqueUsername } from './unique-username.validator';
 
@@ -5,6 +6,9 @@ export class User{
 
     id: number;
 
+    @Expose({
+        name: 'username'
+    })
     @UniqueUsername({
         message: "name already exists"
     })
@@ -18,6 +22,9 @@ export class User{
     })
     email: string;
 
+    @Exclude({
+        toPlainOnly: true
+    })
     @IsNotEmpty({
         message: 'password is required'
     })
